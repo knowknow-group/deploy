@@ -2,7 +2,12 @@ name: Deploy CI
 
 on:
   workflow_call:
-
+    secrets:
+        DEPLOY_USER:
+          required: true
+        DEPLOY_PASS:
+          required: true
+          
 env:
   IMAGE_NAME: 'knowknow-api'
 
@@ -27,8 +32,8 @@ jobs:
       with:
         server: ${{ vars.PROD_HOST }}
         port: ${{ vars.PROD_PORT }}
-        username: ${{ secrets.PROD_DEPLOY_USER }}
-        password: ${{ secrets.PROD_DEPLOY_PASS }}
+        username: ${{ secrets.DEPLOY_USER }}
+        password: ${{ secrets.DEPLOY_PASS }}
         local_path: './${{ env.IMAGE_NAME }}.tar.gz'
         remote_path: './'
         sftp_only: true
@@ -38,8 +43,8 @@ jobs:
       with:
         host: ${{ vars.PROD_HOST }}
         port: ${{ vars.PROD_PORT }}
-        username: ${{ secrets.PROD_DEPLOY_USER }}
-        password: ${{ secrets.PROD_DEPLOY_PASS }}
+        username: ${{ secrets.DEPLOY_USER }}
+        password: ${{ secrets.DEPLOY_PASS }}
         script: |        
           # stop runnin container(s)
           sudo docker ps -q --filter "name=${{ env.IMAGE_NAME }}" | xargs -r sudo docker stop
