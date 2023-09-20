@@ -53,4 +53,5 @@ jobs:
           sudo docker load < ./${{ env.IMAGE_NAME }}.tar.gz
           rm ./${{ env.IMAGE_NAME }}.tar.gz
           sudo docker run --name ${{ env.IMAGE_NAME }} --add-host host.docker.internal:host-gateway -v /usr/local/etc/${{ env.IMAGE_NAME }}:/opt/${{ env.IMAGE_NAME }}/built/config -d ${{ env.IMAGE_NAME }}
-          
+
+        
