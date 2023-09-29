@@ -46,8 +46,8 @@ jobs:
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASS }}
         script: |        
-          sudo docker load < ./'${{ secrets.IMAGE_NAME }}'.tar.gz
-          rm ./${{ secrets.IMAGE_NAME }}.tar.gz
+          'sudo docker load < ./${{ secrets.IMAGE_NAME }}.tar.gz'
+          'rm ./${{ secrets.IMAGE_NAME }}.tar.gz'
 
-          sudo docker compose up -f ${{ secrets.DEPLOY_NAME }} -d ${{ secrets.IMAGE_NAME }}
+          'sudo docker compose up -f ${{ secrets.DEPLOY_NAME }} -d ${{ secrets.IMAGE_NAME }}'
 
