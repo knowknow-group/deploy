@@ -34,7 +34,7 @@ jobs:
         port: ${{ vars.PROD_PORT }}
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASS }}
-        local_path: './${{ env.IMAGE_NAME }}.tar.gz'
+        local_path: './${{ secrets.IMAGE_NAME }}.tar.gz'
         remote_path: './'
         sftp_only: true
 
