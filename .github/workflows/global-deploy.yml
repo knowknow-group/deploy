@@ -2,6 +2,13 @@ name: Deploy CI
 
 on:
   workflow_call:
+    inputs:
+      IMAGE_NAME:
+        required: true
+        type: string
+      DEPLOY_NAME:
+        required: true
+        type: string
     secrets:
         DEPLOY_USER:
           required: true
@@ -19,10 +26,10 @@ jobs:
       run: npm i; npm run build:dev
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile -t ${{ env.IMAGE_NAME }}
+      run: docker build . --file Dockerfile -t ${{ inputs.IMAGE_NAME }}
 
     - name: Save the Docker image and gzip
-      run: docker save ${{ env.IMAGE_NAME }} | gzip > ${{ env.IMAGE_NAME }}.tar.gz
+      run: docker save ${{ inputs.IMAGE_NAME }} | gzip > ${{ inputs.IMAGE_NAME }}.tar.gz
 
     - name: Upload image file to remote server
       uses: wlixcc/SFTP-Deploy-Action@v1.2.4
@@ -31,7 +38,7 @@ jobs:
         port: ${{ vars.PROD_PORT }}
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASS }}
-        local_path: './${{ env.IMAGE_NAME }}.tar.gz'
+        local_path: './${{ inputs.IMAGE_NAME }}.tar.gz'
         remote_path: './'
         sftp_only: true
 
@@ -43,8 +50,8 @@ jobs:
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASS }}
         script: |        
-          'sudo docker load < ./${{ env.IMAGE_NAME }}.tar.gz'
-          'rm ./${{ env.IMAGE_NAME }}.tar.gz'
+          'sudo docker load < ./${{ inputs.IMAGE_NAME }}.tar.gz'
+          'rm ./${{ inputs.IMAGE_NAME }}.tar.gz'
 
-          'sudo docker compose up -f ${{env.DEPLOY_NAME }} -d ${{ env.IMAGE_NAME }}'
+          'sudo docker compose up -f ${{inputs.DEPLOY_NAME }} -d ${{ inputs.IMAGE_NAME }}'
 
