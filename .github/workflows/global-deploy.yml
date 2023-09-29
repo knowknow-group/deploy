@@ -50,7 +50,6 @@ jobs:
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASS }}
         script: |       
-          ls
           sudo docker load < ./${{ inputs.IMAGE_NAME }}.tar.gz
           rm ./${{ inputs.IMAGE_NAME }}.tar.gz
 
