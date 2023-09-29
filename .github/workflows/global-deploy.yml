@@ -46,14 +46,8 @@ jobs:
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASS }}
         script: |        
-          # stop runnin container(s)
-          sudo docker ps -q --filter "name=${{ env.IMAGE_NAME }}" | xargs -r sudo docker stop
-          # remove existing container(s)
-          sudo docker ps -aq --filter "name=${{ env.IMAGE_NAME }}" | xargs -r sudo docker rm
-          #remove existing image(s)
-          sudo docker images -a | grep ${{ env.IMAGE_NAME }} | awk '{print $3}' | xargs -r sudo docker rmi
-
           sudo docker load < ./${{ env.IMAGE_NAME }}.tar.gz
           rm ./${{ env.IMAGE_NAME }}.tar.gz
-          sudo docker run --name ${{ env.IMAGE_NAME }} --add-host host.docker.internal:host-gateway -v /usr/local/etc/${{ env.IMAGE_NAME }}:/opt/${{ env.IMAGE_NAME }}/built/config -d ${{ env.IMAGE_NAME }}
+
+          sudo docker compose up ${{ env.IMAGE_NAME }} -d
 
