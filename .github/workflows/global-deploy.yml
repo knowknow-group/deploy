@@ -49,9 +49,10 @@ jobs:
         port: ${{ vars.PROD_PORT }}
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASS }}
-        script: |        
-          'sudo docker load < ./${{ inputs.IMAGE_NAME }}.tar.gz'
-          'rm ./${{ inputs.IMAGE_NAME }}.tar.gz'
+        script: |       
+          ls
+          sudo docker load < ./${{ inputs.IMAGE_NAME }}.tar.gz
+          rm ./${{ inputs.IMAGE_NAME }}.tar.gz
 
-          'sudo docker compose up -f ${{inputs.DEPLOY_NAME }} -d ${{ inputs.IMAGE_NAME }}'
+          sudo docker compose up -f ${{inputs.DEPLOY_NAME }} -d ${{ inputs.IMAGE_NAME }}
 
