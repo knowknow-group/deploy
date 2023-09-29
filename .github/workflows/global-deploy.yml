@@ -53,5 +53,5 @@ jobs:
           sudo docker load < ./${{ inputs.IMAGE_NAME }}.tar.gz
           rm ./${{ inputs.IMAGE_NAME }}.tar.gz
 
-          sudo docker compose -f /usr/local/etc/knowknow-deploy/docker-compose/${{inputs.DEPLOY_NAME }}.yaml up -d ${{ inputs.IMAGE_NAME }}:latest
+          sudo docker compose -f /usr/local/etc/knowknow-deploy/docker-compose/${{inputs.DEPLOY_NAME }}.yaml up ${{ inputs.IMAGE_NAME }} -d
 
