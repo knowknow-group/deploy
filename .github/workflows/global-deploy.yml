@@ -22,10 +22,10 @@ jobs:
       run: npm i; npm run build:dev
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile -t ${{ secrets.IMAGE_NAME }}
+      run: docker build . --file Dockerfile -t ${{ env.IMAGE_NAME }}
 
     - name: Save the Docker image and gzip
-      run: docker save ${{ secrets.IMAGE_NAME }} | gzip > ${{ secrets.IMAGE_NAME }}.tar.gz
+      run: docker save ${{ env.IMAGE_NAME }} | gzip > ${{ env.IMAGE_NAME }}.tar.gz
 
     - name: Upload image file to remote server
       uses: wlixcc/SFTP-Deploy-Action@v1.2.4
@@ -34,7 +34,7 @@ jobs:
         port: ${{ vars.PROD_PORT }}
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASS }}
-        local_path: './${{ secrets.IMAGE_NAME }}.tar.gz'
+        local_path: './${{ env.IMAGE_NAME }}.tar.gz'
         remote_path: './'
         sftp_only: true
 
@@ -46,8 +46,8 @@ jobs:
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASS }}
         script: |        
-          'sudo docker load < ./${{ secrets.IMAGE_NAME }}.tar.gz'
-          'rm ./${{ secrets.IMAGE_NAME }}.tar.gz'
+          'sudo docker load < ./${{ env.IMAGE_NAME }}.tar.gz'
+          'rm ./${{ env.IMAGE_NAME }}.tar.gz'
 
-          'sudo docker compose up -f ${{ secrets.DEPLOY_NAME }} -d ${{ secrets.IMAGE_NAME }}'
+          'sudo docker compose up -f ${{env.DEPLOY_NAME }} -d ${{ env.IMAGE_NAME }}'
 
