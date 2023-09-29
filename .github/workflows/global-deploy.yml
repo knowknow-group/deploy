@@ -8,9 +8,6 @@ on:
         DEPLOY_PASS:
           required: true
           
-env:
-  IMAGE_NAME: 'knowknow-api'
-
 jobs:
   autodeploy:
     runs-on: ubuntu-latest
