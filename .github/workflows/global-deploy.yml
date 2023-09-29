@@ -49,5 +49,5 @@ jobs:
           sudo docker load < ./${{ env.IMAGE_NAME }}.tar.gz
           rm ./${{ env.IMAGE_NAME }}.tar.gz
 
-          sudo docker compose up ${{ env.IMAGE_NAME }} -d
+          sudo docker compose up -f ${{ env.DEPLOY_NAME }} -d ${{ env.IMAGE_NAME }}
 
