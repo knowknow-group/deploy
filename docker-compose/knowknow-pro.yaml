@@ -1,6 +1,7 @@
 version: '3.9'
 services:
   knowknow-api:
+    container_name: knowknow-api
     image: knowknow-api:latest
     volumes:
       - /usr/local/etc/knowknow-api:/opt/knowknow-api/built/config
@@ -8,8 +9,12 @@ services:
       - "host.docker.internal:host-gateway"
     ports:
       - "4000:8080"
-
+    networks:
+      knowknow-pro:
+        ipv4_address: 172.18.0.2
+        
   knowknow-ui:
+    container_name: knowknow-ui
     image: knowknow-ui:latest
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -17,6 +22,9 @@ services:
       API_ENDPOINT: 'https://school.knowknow.pro/api/graphql'
     ports:
       - "3000:3000"
+    networks:
+      knowknow-pro:
+        ipv4_address: 172.18.0.3
 
   # knowknow-pro:
   #   image: knowknow-pro:latest
@@ -24,3 +32,11 @@ services:
   #   volumes:
   #   ports:
   #     - "3001:3000"
+
+networks:
+  knowknow-pro:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.18.0.0/16
+         gateway: 172.18.0.1
