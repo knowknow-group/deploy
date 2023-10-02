@@ -14,7 +14,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
-      SERVER_LINK: 'http://knowknow-api:8080/api/graphql'
+      API_ENDPOINT: 'http://knowknow-api:8080/api/graphql'
     ports:
       - "3000:3000"
 
