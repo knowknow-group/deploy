@@ -8,4 +8,17 @@ services:
       - "host.docker.internal:host-gateway"
     ports:
       - "4000:8080"
-      
+
+  knowknow-ui:
+    image: knowknow-ui:latest
+    environment:
+    volumes:
+    ports:
+      - "3000:3000"
+
+  # knowknow-pro:
+  #   image: knowknow-pro:latest
+  #   environment:
+  #   volumes:
+  #   ports:
+  #     - "3001:3000"
