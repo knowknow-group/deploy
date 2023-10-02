@@ -11,8 +11,8 @@ services:
 
   knowknow-ui:
     image: knowknow-ui:latest
-    environment:
-    volumes:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "3000:3000"
 
