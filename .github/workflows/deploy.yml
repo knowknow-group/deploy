@@ -10,17 +10,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: test
-        run: ${{ secrets.PROD_DEPLOY_USER }} ${{ secrets.DEPLOY_PASS }}
       
       - name: Upload image file to remote server
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ vars.PROD_HOST }}
           port: ${{ vars.PROD_PORT }}
-          username: ${{ secrets.DEPLOY_USER }}
-          password: ${{ secrets.DEPLOY_PASS }}
+          username: ${{ secrets.PROD_DEPLOY_USER }}
+          password: ${{ secrets.PROD_DEPLOY_PASS }}
           local_path: './docker-compose/*'
           remote_path: './usr/local/etc/knowknow-deploy/docker-compose/'
           sftp_only: true
