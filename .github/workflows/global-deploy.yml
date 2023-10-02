@@ -55,3 +55,5 @@ jobs:
 
           sudo docker compose -f /usr/local/etc/knowknow-deploy/docker-compose/${{inputs.DEPLOY_NAME }}.yaml up -d --no-deps --force-recreate ${{ inputs.IMAGE_NAME }}
 
+          sudo docker images -a | grep "<none>" | awk '{print $3}' | xargs -r sudo docker rmi
+
