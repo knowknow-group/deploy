@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: test
-        run: ${{ vars.PROD_HOST }} ${{ vars.PROD_PORT }} ${{ secrets.DEPLOY_USER }} ${{ secrets.DEPLOY_PASS }}
+        run: ${{ secrets.DEPLOY_USER }} ${{ secrets.DEPLOY_PASS }}
       
       - name: Upload image file to remote server
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
