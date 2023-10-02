@@ -19,5 +19,5 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           password: ${{ secrets.DEPLOY_PASS }}
           local_path: './docker-compose/*'
-          remote_path: './usr/local/etc/knowknow-deploy/'
+          remote_path: './usr/local/etc/knowknow-deploy/docker-compose'
           sftp_only: true
