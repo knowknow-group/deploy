@@ -10,6 +10,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: test
+        run: ls
       
       - name: Upload image file to remote server
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
