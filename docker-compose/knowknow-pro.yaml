@@ -30,8 +30,8 @@ services:
     container_name: knowknow-pro
     image: knowknow-pro:latest
     args:
-      BACKOFFICE_URI: "https://school.knowknow.pro/"
-      API_ENDPOINT: 'https://school.knowknow.pro/api/graphql'
+      NUXT_BACKOFFICE_URI: "https://school.knowknow.pro/"
+      NUXT_API_ENDPOINT: 'https://school.knowknow.pro/api/graphql'
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
