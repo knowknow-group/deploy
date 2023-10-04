@@ -30,7 +30,7 @@ services:
     container_name: knowknow-pro
     image: knowknow-pro:latest
     volumes:
-      - /usr/local/etc/knowknow-pro/.env:/opt/knowknow-pro/.env
+      - /usr/local/etc/knowknow-deploy/knowknow-pro/.env:/opt/knowknow-pro/.env
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
