@@ -26,12 +26,12 @@ services:
       knowknow-pro:
         ipv4_address: 172.18.0.3
 
-  # knowknow-pro:
-  #   image: knowknow-pro:latest
-  #   environment:
-  #   volumes:
-  #   ports:
-  #     - "3001:3000"
+  knowknow-pro:
+    image: knowknow-pro:latest
+    environment:
+    volumes:
+    ports:
+      - "3001:3000"
 
 networks:
   knowknow-pro:
