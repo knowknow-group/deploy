@@ -29,7 +29,9 @@ services:
   knowknow-pro:
     image: knowknow-pro:latest
     environment:
-    volumes:
+      BACKOFFICE_URI: "https://school.knowknow.pro/"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "3001:3000"
 
