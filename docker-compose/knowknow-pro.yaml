@@ -31,8 +31,8 @@ services:
     image: knowknow-pro:latest
     command: --max_size=1300
     args:
-      NUXT_BACKOFFICE_URI: "https://school.knowknow.pro/"
-      NUXT_API_ENDPOINT: 'https://school.knowknow.pro/api/graphql'
+      BACKOFFICE_URI: "https://school.knowknow.pro/"
+      ENDPOINT: 'https://school.knowknow.pro/api/graphql'
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
