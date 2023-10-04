@@ -29,10 +29,8 @@ services:
   knowknow-pro:
     container_name: knowknow-pro
     image: knowknow-pro:latest
-    command: --max_size=1300
-    args:
-      BACKOFFICE_URI: "https://school.knowknow.pro/"
-      ENDPOINT: 'https://school.knowknow.pro/api/graphql'
+    volumes:
+      - /usr/local/etc/knowknow-pro:/opt/knowknow-pro
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
