@@ -35,6 +35,9 @@ services:
       - "host.docker.internal:host-gateway"
     ports:
       - "3001:3000"
+    networks:
+      knowknow-pro:
+        ipv4_address: 172.18.0.4
 
 networks:
   knowknow-pro:
