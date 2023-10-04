@@ -29,7 +29,6 @@ services:
   knowknow-pro:
     container_name: knowknow-pro
     image: knowknow-pro:latest
-    command: cp /usr/local/etc/knowknow-deploy/knowknow-pro/.env ./
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
