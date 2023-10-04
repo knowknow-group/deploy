@@ -29,6 +29,7 @@ services:
   knowknow-pro:
     container_name: knowknow-pro
     image: knowknow-pro:latest
+    command: --max_size=1300
     args:
       NUXT_BACKOFFICE_URI: "https://school.knowknow.pro/"
       NUXT_API_ENDPOINT: 'https://school.knowknow.pro/api/graphql'
