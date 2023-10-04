@@ -29,7 +29,7 @@ services:
   knowknow-pro:
     container_name: knowknow-pro
     image: knowknow-pro:latest
-    args:
+    environment:
       NUXT_BACKOFFICE_URI: "https://school.knowknow.pro/"
       NUXT_API_ENDPOINT: 'https://school.knowknow.pro/api/graphql'
     extra_hosts:
