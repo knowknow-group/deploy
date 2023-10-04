@@ -30,7 +30,7 @@ services:
     container_name: knowknow-pro
     image: knowknow-pro:latest
     environment:
-      API_ENDPOINT: "https://school.knowknow.pro/"
+      BACKOFFICE_URI: "https://school.knowknow.pro/"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
