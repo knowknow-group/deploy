@@ -16,10 +16,10 @@ services:
   knowknow-ui:
     container_name: knowknow-ui
     image: knowknow-ui:latest
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     environment:
       API_ENDPOINT: 'https://school.knowknow.pro/api/graphql'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "3000:3000"
     networks:
@@ -29,6 +29,9 @@ services:
   knowknow-pro:
     container_name: knowknow-pro
     image: knowknow-pro:latest
+    environment:
+      API_ENDPOINT: https://knowknow.pro/api/graphql
+      BACKOFFICE_URI: https://school.knowknow.pro
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
