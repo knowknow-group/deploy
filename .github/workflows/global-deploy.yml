@@ -21,9 +21,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
-    - name: Build project
-      run: npm i; npm run build
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile -t ${{ inputs.IMAGE_NAME }}
