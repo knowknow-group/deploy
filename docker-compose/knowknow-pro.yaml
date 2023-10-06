@@ -5,6 +5,7 @@ services:
     image: knowknow-api:latest
     volumes:
       - /usr/local/etc/knowknow-api:/opt/knowknow-api/built/config
+      - /var/local/knowknow-api:/opt/knowknow-api/public
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
@@ -30,8 +31,8 @@ services:
     container_name: knowknow-pro
     image: knowknow-pro:latest
     environment:
-      API_ENDPOINT: https://knowknow.pro/api/graphql
-      BACKOFFICE_URI: https://school.knowknow.pro
+      NUXT_PUBLIC_GQL_HOST: https://knowknow.pro/api/graphql
+      NUXT_PUBLIC_BACKOFFICE_URI: https://school.knowknow.pro
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
