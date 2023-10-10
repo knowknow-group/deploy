@@ -4,6 +4,8 @@ services:
     container_name: knowknow-ru
     image: knowknow-ru:latest
     volumes:
+      - /usr/local/etc/knowknow-ru/db_config.php:/var/www/html/protected/config/db_config.php
+      - /usr/local/etc/knowknow-ru/smtp_config.php:/var/www/html/protected/config/smtp_config.php
       - /var/local/knowknow-ru/files:/var/www/html/files
       - /var/local/knowknow-ru/runtime:/var/www/html/protected/runtime
     extra_hosts:
