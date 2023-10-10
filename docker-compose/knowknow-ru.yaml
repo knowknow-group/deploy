@@ -3,6 +3,9 @@ services:
   knowknow-ru:
     container_name: knowknow-ru
     image: knowknow-ru:latest
+    volumes:
+      - /var/local/knowknow-ru/files:/var/www/html/files
+      - /var/local/knowknow-ru/runtime:/var/www/html/protected/runtime
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
