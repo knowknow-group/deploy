@@ -3,8 +3,8 @@ services:
   knowknow-ru:
     container_name: knowknow-ru
     image: knowknow-ru:latest
-    ports:
-      - "9001:9000"
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    ports:
+      - "9001:9000"
 
