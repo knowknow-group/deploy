@@ -1,6 +1,6 @@
 version: '3.9'
 services:
-  knowknow-ru:
+  knowknow-crm:
     container_name: knowknow-crm
     image: knowknow-crm:latest
     volumes:
