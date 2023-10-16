@@ -6,6 +6,7 @@ services:
     volumes:
       - /usr/local/etc/knowknow-crm/:/var/www/html/application/config/
       - /var/local/knowknow-crm/files:/var/www/html/files
+      - /var/local/knowknow-crm/other:/var/www/html/other
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
