@@ -14,7 +14,7 @@ services:
       - "4000:8080"
     networks:
       knowknow-pro:
-        ipv4_address: 172.17.0.2
+        ipv4_address: 172.18.0.2
         
   knowknow-ui:
     container_name: knowknow-ui
@@ -27,7 +27,7 @@ services:
       - "3000:3000"
     networks:
       knowknow-pro:
-        ipv4_address: 172.17.0.3
+        ipv4_address: 172.18.0.3
 
   knowknow-pro:
     container_name: knowknow-pro
@@ -41,12 +41,12 @@ services:
       - "3001:3000"
     networks:
       knowknow-pro:
-        ipv4_address: 172.17.0.4
+        ipv4_address: 172.18.0.4
 
 networks:
   knowknow-pro:
     driver: bridge
     ipam:
      config:
-       - subnet: 172.17.0.0/16
-         gateway: 172.17.0.1
+       - subnet: 172.18.0.0/16
+         gateway: 172.18.0.1
