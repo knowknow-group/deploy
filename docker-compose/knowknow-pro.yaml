@@ -9,7 +9,7 @@ services:
       - /usr/local/etc/knowknow-api:/opt/knowknow-api/built/config
       - /var/local/knowknow-api:/opt/knowknow-api/public
     extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - "host.docker.internal:172.18.0.1"
     ports:
       - "4000:8080"
     networks:
