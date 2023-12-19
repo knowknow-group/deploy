@@ -4,7 +4,7 @@ services:
     container_name: knowknow-api
     image: knowknow-api:latest
     environment:
-      NODE_ENV: production
+      NODE_ENV: 'production'
     volumes:
       - /usr/local/etc/knowknow-api:/opt/knowknow-api/built/config
       - /var/local/knowknow-api:/opt/knowknow-api/public
@@ -21,6 +21,7 @@ services:
     image: knowknow-ui:latest
     environment:
       API_ENDPOINT: 'https://school.knowknow.pro/api/graphql'
+      NODE_ENV: 'production'
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
